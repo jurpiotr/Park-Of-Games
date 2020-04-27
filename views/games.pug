@@ -1,8 +1,11 @@
 extends layout
 block content
   .banner
-    video(class="banner__video" autoplay muted loop)
-      source(src="https://media.rawg.io/media/stories-640/5b0/5b0cfff8c606c5e4db4f74f108c4413b.mp4" type="video/mp4")
+    if item[0].clip != NULL
+      video(class="banner__video" autoplay muted loop)
+        source(src=item[0].clip.clip type="video/mp4")
+    else
+      img(src=item[0].background_image)
   .sandbox
     p.sandbox__item.card Title Game
     p.sandbox__item.card Title Game
@@ -16,11 +19,3 @@ block content
     p.sandbox__item.card Title Game
     p.sandbox__item.card Title Game
     p.sandbox__item.card Title Game
-  .parallax-container
-    .parallax-contain
-      p.parallax-contain__item.card Paralax
-      p.parallax-contain__item.card Paralax
-    .parallax-block
-      .parallax-background
-  .aboutAPI
-    | RAWG.IO

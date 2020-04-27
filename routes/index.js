@@ -6,12 +6,11 @@ router.get('/', (req, res) => {
     res.render('home');
     
 })
-router.get('/api', async (req, res) => {
-    console.log('/api ...');
+router.get('/games/:name', async (req, res) => {
+    console.log('/games ...');
     try{
-
         const values = await axios({
-            url: "https://api.rawg.io/api/games?page_size=1",
+            url: 'https://api.rawg.io/api/games?search=' + req.params.name,
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -26,11 +25,11 @@ router.get('/api', async (req, res) => {
             dataJSON.results.map((items) => {
                 itemsArr.push(items);
             });
-            res.render('api', {
-                items: itemsArr,
+            res.render('games', {
+                item: itemsArr,
                 count: dataJSON.count
             })
-            console.log(itemsArr);
+            console.log(itemsArr[0].clip.clip);
         });
         return values;
     } catch {
