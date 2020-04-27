@@ -9,9 +9,9 @@ const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.get('./js/scrolling.js',function(req,res){
-    res.sendFile(path.join(__dirname + './js/scrolling.js'));
-});
+// app.get('./js/scrolling.js',function(req,res){
+//     res.sendFile(path.join(__dirname + './js/scrolling.js'));
+// });
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
