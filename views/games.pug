@@ -1,21 +1,20 @@
 extends layout
 block content
   .banner
-    if item[0].clip != NULL
-      video(class="banner__video" autoplay muted loop)
-        source(src=item[0].clip.clip type="video/mp4")
+    if items[0].clip != NULL
+      video.banner__video(autoplay muted loop)
+        source(src=items[0].clip.clip type="video/mp4")
     else
-      img(src=item[0].background_image)
+      img.banner__img(src=items[0].background_image)
   .sandbox
-    p.sandbox__item.card Title Game
-    p.sandbox__item.card Title Game
-    p.sandbox__item.card Title Game
-    p.sandbox__item.card Title Game
-    p.sandbox__item.card Title Game
-    p.sandbox__item.card Title Game
-    p.sandbox__item.card Title Game
-    p.sandbox__item.card Title Game
-    p.sandbox__item.card Title Game
-    p.sandbox__item.card Title Game
-    p.sandbox__item.card Title Game
-    p.sandbox__item.card Title Game
+    each i in items
+      div.sandbox__item.card 
+        img.card__img(src=i.background_image)
+        .card__title=i.name
+        .card__info
+          each p in i.platforms
+            .card__platforms=p.platform.name
+          .card__released="Released "+i.released
+          .card__rating=i.rating
+        .card__frame
+

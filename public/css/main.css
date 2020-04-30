@@ -39,7 +39,7 @@ body {
    top: 0;
    width: 100%;
    height: 8vh;
-   background: rgba(0, 160, 209, 0.5)
+   background: rgba(0, 160, 209, 0.5);
    transition-property: 'height top';
    transition-duration: 0.4s;
    -webkit-backdrop-filter: blur(2px);
@@ -146,13 +146,15 @@ body {
 .sticky__input::placeholder{
 color: rgba(255, 255, 0, 0.4)
 }
+.sticky__submit{
+   display: none;
+}
 .sticky__search-button{
+   display: none;
    position: relative;
    width: 8vmin;
    height: 8vmin;
    border-radius: 5px;
-
-
 }
 .sticky__svg-button{
    stroke:none;
@@ -198,7 +200,12 @@ color: rgba(255, 255, 0, 0.4)
    width: 100%;
    max-width: 100%;
    min-height: 100%;
- }
+}
+.banner__img{
+   width: 100%;
+   height: 50%;
+   object-fit: cover;
+}
 .sandbox{
   display: flex;
   flex-wrap: wrap;
@@ -207,7 +214,7 @@ color: rgba(255, 255, 0, 0.4)
   width: 100%;
   height: auto;
   padding: 3vh 1vw;
-  background: rgb(27, 0, 77)
+  background: rgb(0, 22, 29);
 }
 .parallax-container {
    z-index: -1;
@@ -227,13 +234,97 @@ color: rgba(255, 255, 0, 0.4)
    color: rgb(200, 255, 0);
 }
 .card{
-   width: 200px;
-   height: 300px;
+   position: relative;
+   width: 350px;
+   height: 350px;
    margin: 10px;
-   background-color: #add400;
    border: 1px solid #000;
 }
-
+.card__frame{
+   position: absolute;
+   top: 0;
+   width: 350px;
+   height: 350px;
+   box-shadow: 
+      inset 0 0 3px 1px rgba(173, 212, 0, 1),
+      inset 0 0 5px 7px rgb(0, 0, 0);
+}
+.card__img{
+   position: relative;
+   width: 100%;
+   height: 70%;
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+   object-fit: cover;
+}
+.card__title{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 12%;
+   border: 1px solid rgba(173, 212, 0, 0.6);
+   font-size: 0.9em;;
+   text-align: center;
+   line-height: 1.2em;
+   color: rgba(0, 160, 209, 1);
+   background-color: rgba(0, 160, 209, 0.1);
+}
+.card__info{
+   display:flex;
+   flex-wrap: wrap;
+   justify-content: start;
+   align-items: flex-start;
+   margin: 1px 6px;
+   height: 18%;
+   width: 97%;
+   background-color: rgba(173, 212, 0, 0.1);
+}
+.card__platforms{
+   margin: 1px 2px;
+   padding: 0 2px;
+   font-size: 10px;
+   color: #000;
+   text-align: center;
+   background-color: rgba(173, 212, 0, 0.6);
+   border: 1px solid rgba(173, 212, 0, 1);
+   border-radius: 2px;;
+   line-height: 1.2em;
+}
+.card__released{
+   position: absolute;
+   height: 7%;
+   left: 0;
+   bottom: 1px;
+   margin: 0 10px 0px;
+   font-size: 0.8em;
+   color: rgba(173, 212, 0, 1);
+   text-align: center;
+   border-radius: 50%;  
+}
+.card__rating{
+   position: absolute;
+   width: 30px;
+   height: 7%;
+   right: 0;
+   bottom: 1px;
+   margin: 0 10px 0px;
+   background-color:rgb(193, 236, 0);
+   font-size: 0.8em;
+   color: #000;
+   text-align: center;
+   border-radius: 50%;
+   box-shadow: inset 0 0 3px 1px #000;
+   line-height: 1.5em;
+}
+.card__rating:before{
+   content: "RATING: ";
+   position: absolute;
+   right: 34px;
+   font-size: 0.8em;
+   color: rgb(193, 236, 0);
+}
 .parallax-block {
    z-index: -10;
    position: absolute;
