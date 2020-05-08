@@ -4,9 +4,20 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const routes = require('./routes/index');
+const compileSass = require('express-compile-sass');
+const root = process.cwd();
 
 const app = express();
+console.log(compileSass);
+app.use(compileSass({
+  root: root,
+  sourceMap: true,
+  sourceComments: true,
+  watchFiles: true,
+  logToConsole: false
+}));
 
+app.use(express.static(root));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
