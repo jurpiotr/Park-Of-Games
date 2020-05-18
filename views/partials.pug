@@ -1,0 +1,11 @@
+each i in items
+  div.sandbox__item.card 
+    img.card__img(src=i.background_image)
+    .card__title=i.name
+    .card__info
+      each p in i.platforms
+        .card__platforms=p.platform.name
+      .card__released="Released "+i.released
+      .card__rating=i.rating
+    .card__frame
+#lm.lm(data-num=next data-search=search) LOAD MORE GAMES

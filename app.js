@@ -8,7 +8,6 @@ const compileSass = require('express-compile-sass');
 const root = process.cwd();
 
 const app = express();
-console.log(compileSass);
 app.use(compileSass({
   root: root,
   sourceMap: true,
@@ -22,15 +21,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-
 app.use(flash());
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-// app.get('./js/scrolling.js',function(req,res){
-//     res.sendFile(path.join(__dirname + './js/scrolling.js'));
-// });
-
 
 app.use('/', routes);
 

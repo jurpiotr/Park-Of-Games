@@ -6,7 +6,7 @@ block content
         source(src=items[0].clip.clip type="video/mp4")
     else
       img.banner__img(src=items[0].background_image)
-  .sandbox
+  #sandbox.sandbox
     each i in items
       div.sandbox__item.card 
         img.card__img(src=i.background_image)
@@ -17,4 +17,7 @@ block content
           .card__released="Released "+i.released
           .card__rating=i.rating
         .card__frame
+    #lm.lm(data-num=next data-search=search) LOAD MORE GAMES
+  .prnt=next
+  .prnt=search
 

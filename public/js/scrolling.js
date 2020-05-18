@@ -10,7 +10,6 @@
         //    sticky.classList.add('sticky');
             nextEl.style.opacity = 1;
             logo.classList.remove('logo__name--scrolling');
-            console.log(input)
             input.classList.remove('bar__input--scroll0');
 
         } else {
