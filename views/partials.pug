@@ -8,4 +8,6 @@ each i in items
       .card__released="Released "+i.released
       .card__rating=i.rating
     .card__frame
-#lm.lm(data-num=next data-search=search) LOAD MORE GAMES
+if next
+  .load-more=next
+    #lm.load-more__btn(data-num=next data-search=search) LOAD MORE GAMES

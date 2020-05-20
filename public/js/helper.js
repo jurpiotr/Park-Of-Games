@@ -24,8 +24,8 @@ module.exports = {
   },
 
   dataNum: (url) => {
+    console.log( 'is null' + url)
     const index = url.indexOf('page=') + 5;
-    console.log(index);
     const extract = url.slice(index, index + 2);
     return parseInt(extract[1]) ? extract : extract[0];
   }

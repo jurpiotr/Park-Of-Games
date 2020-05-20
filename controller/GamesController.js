@@ -6,8 +6,6 @@ const pug = require('pug');
 
 exports.partials = async (req, res) => {
 	try {
-		const url = `${URL}page=${req.query.page}&search=${req.query.search}`;
-		console.log(url)
 		const values = await axios({
 			url: `${URL}page=${req.query.page}&search=${req.query.search}`,
 			method: "GET",
@@ -17,22 +15,28 @@ exports.partials = async (req, res) => {
 		})
 			.then((response) => {
         const dataJSON = response.data;
-				console.log(dataJSON.count);
+				console.log('neeex' + dataJSON.next);
 				return dataJSON;
 			})
 			.then((dataJSON) => {
+				const nextPage = () => {
+					if(dataJSON.next !== null){
+						return dataNum(dataJSON.next);
+					} else {
+						return 'aaaaaaaaaaaaaaa'
+					}
+				}
+				console.log(nextPage())
 				let itemsArr = [];
-
 				dataJSON.results.map((items) => {
 					itemsArr.push(items);
 				});
 				const part = pug.renderFile('views/partials.pug', {
 					items: itemsArr,
-					next: dataNum(dataJSON.next),
+					next: nextPage(),
 					search: req.query.search
 				});
 				res.json(part);
-				console.log('part');
 			});
 		return values;
 	} catch {
@@ -88,6 +92,14 @@ exports.search = async (req, res) => {
 				return dataJSON;
 			})
 			.then((dataJSON) => {
+				const nextPage = () => {
+					if(dataJSON.next !== null){
+						return dataNum(dataJSON.next);
+					} else {
+						return 'aaaaaaaaaaaaaaa'
+					}
+				}
+				console.log(nextPage())
 				let itemsArr = [];
 
 				dataJSON.results.map((items) => {
@@ -95,7 +107,7 @@ exports.search = async (req, res) => {
 				});
 				res.render("games", {
 					items: itemsArr,
-					next: dataNum(dataJSON.next),
+					next: nextPage(),
 					search: req.query.search
 				});
 			});
