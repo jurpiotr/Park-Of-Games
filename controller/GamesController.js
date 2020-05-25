@@ -15,16 +15,13 @@ exports.partials = async (req, res) => {
 		})
 			.then((response) => {
         const dataJSON = response.data;
-				console.log('neeex' + dataJSON.next);
 				return dataJSON;
 			})
 			.then((dataJSON) => {
 				const nextPage = () => {
-					if(dataJSON.next !== null){
-						return dataNum(dataJSON.next);
-					} else {
-						return 'aaaaaaaaaaaaaaa'
-					}
+					return dataJSON.next !== null 
+					? dataNum(dataJSON.next) 
+					: 'end';
 				}
 				console.log(nextPage())
 				let itemsArr = [];
@@ -43,7 +40,6 @@ exports.partials = async (req, res) => {
 		(err) => console.error(err);
 	}
 };
-
 
 exports.dates = async (req, res) => {
 	console.log("/home ...");
@@ -93,11 +89,9 @@ exports.search = async (req, res) => {
 			})
 			.then((dataJSON) => {
 				const nextPage = () => {
-					if(dataJSON.next !== null){
-						return dataNum(dataJSON.next);
-					} else {
-						return 'aaaaaaaaaaaaaaa'
-					}
+					return dataJSON.next !== null 
+					? dataNum(dataJSON.next) 
+					: 'end';
 				}
 				console.log(nextPage())
 				let itemsArr = [];

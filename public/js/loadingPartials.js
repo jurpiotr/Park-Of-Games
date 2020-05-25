@@ -1,5 +1,3 @@
-console.log('loadingPartials')
-
 window.addEventListener('DOMContentLoaded', () => {
 	const sandbox = document.querySelector('.sandbox');
 	sandbox.addEventListener('click', logSubmit = (event) => {

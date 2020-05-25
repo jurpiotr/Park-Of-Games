@@ -7,6 +7,7 @@ block content
     else
       img.banner__img(src=items[0].background_image)
   #sandbox.sandbox
+    h2.sandbox__new NEW RELEASES
     each i in items
       div.sandbox__item.card 
         img.card__img(src=i.background_image)
@@ -19,6 +20,5 @@ block content
         .card__frame
     .load-more
       #lm.load-more__btn(data-num=next data-search=search) LOAD MORE GAMES
-  .prnt=next
-  .prnt=search
+
 
