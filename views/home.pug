@@ -1,11 +1,26 @@
 extends layout
+mixin parallax(upcoming)
+  .parallax-container
+      .parallax-contain
+        .parallax-contain__title UPCOMING #{upcoming.released}
+        .card
+          img.card__img(src=upcoming.background_image)
+          .card__title=upcoming.name
+          .card__info
+            each p in upcoming.platforms
+              .card__platforms=p.platform.name
+            .card__rating=upcoming.rating
+          .card__frame
+      .parallax-block
+        .parallax-background(style='background-image: url(' + upcoming.background_image+')')
+
 block content
   .banner
     video.banner__video(autoplay muted loop)
       source(src="https://media.rawg.io/media/stories-640/5b0/5b0cfff8c606c5e4db4f74f108c4413b.mp4" type="video/mp4")
   .sandbox
     each i in items
-      div.sandbox__item.card 
+      .sandbox__item.card 
         img.card__img(src=i.background_image)
         .card__title=i.name
         .card__info
@@ -14,11 +29,7 @@ block content
           .card__released="Released "+i.released
           .card__rating=i.rating
         .card__frame
-  .parallax-container
-    .parallax-contain
-      p.parallax-contain__item.card Paralax
-      p.parallax-contain__item.card Paralax
-    .parallax-block
-      .parallax-background
+  +parallax(upcoming1)
+  +parallax(upcoming2)
   .aboutAPI
     | RAWG.IO

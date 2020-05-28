@@ -45,27 +45,38 @@ exports.dates = async (req, res) => {
 	console.log("/home ...");
 
 	try {
-		const values = await axios({
-			url: `${URL}dates=${dateRange(35)}&ordering=-rating`,
-			method: "GET",
-			headers: {
-				Accept: "application/json"
-			}
-		})
-			.then((response) => {
-				const dataJSON = response.data;
-				return dataJSON;
-			})
+		const releasedGameUrl = `${URL}dates=${dateRange(35)}&ordering=-rating`
+		const upcomingGameUrl = `${URL}dates=2020-05-28,2020-10-10&page_size=2`
+		const reqReleased = await axios.get(releasedGameUrl)
+		const reqUpcoming = await axios.get(upcomingGameUrl)
+		axios
+			.all([reqReleased, reqUpcoming])
+			.then(axios.spread((...responses) => {
+				const released = responses[0].data;
+				const upcoming = responses[1].data;
+				return [released, upcoming];
+			}))
 			.then((dataJSON) => {
-				let itemsArr = [];
-				dataJSON.results.map((items) => {
+				let releasedArr = [];
+				dataJSON[0].results.map((items) => {
 					if (items.rating > 0) {
-						itemsArr.push(items);
+						releasedArr.push(items);
 					}
 				});
+				let upcomingArr = [];
+				dataJSON[1].results.map((items) => {
+					if (items.rating > 0) {
+						upcomingArr.push(items);
+					}
+				});
+
+				console.log(dataJSON[1].count);
+
 				res.render("home", {
-					items: itemsArr,
-					next: dataJSON.next
+					items: releasedArr,
+					next: dataJSON.next,
+					upcoming1: upcomingArr[0],
+					upcoming2: upcomingArr[1]
 				});
 			});
 		return values;
