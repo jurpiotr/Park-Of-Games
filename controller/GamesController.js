@@ -42,11 +42,10 @@ exports.partials = async (req, res) => {
 };
 
 exports.dates = async (req, res) => {
-	console.log("/home ...");
 
 	try {
 		const releasedGameUrl = `${URL}dates=${dateRange(35)}&ordering=-rating`
-		const upcomingGameUrl = `${URL}dates=2020-05-28,2020-10-10&page_size=2`
+		const upcomingGameUrl = `${URL}dates=${dateRange(-140)}&page_size=2`
 		const reqReleased = await axios.get(releasedGameUrl)
 		const reqUpcoming = await axios.get(upcomingGameUrl)
 		axios
@@ -70,13 +69,10 @@ exports.dates = async (req, res) => {
 					}
 				});
 
-				console.log(dataJSON[1].count);
-
 				res.render("home", {
 					items: releasedArr,
 					next: dataJSON.next,
-					upcoming1: upcomingArr[0],
-					upcoming2: upcomingArr[1]
+					upcoming: upcomingArr
 				});
 			});
 		return values;

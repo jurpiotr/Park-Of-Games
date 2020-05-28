@@ -17,10 +17,16 @@ module.exports = {
 
     const date = new Date();
     const date1 = formatDate(date);
-    const prevTime = new Date(Date.parse(date1) - 1000 * 60 * 60 * 24 * days);
-    const date2 = formatDate(prevTime);
-    const queryTime = `${date2},${date1}`;
-    return queryTime;
+
+    if(days > 0){
+      const prevTime = new Date(Date.parse(date1) - 1000 * 60 * 60 * 24 * days);
+      const date2 = formatDate(prevTime);
+      return `${date2},${date1}`;
+    } else {
+      const prevTime = new Date(Date.parse(date1) - 1000 * 60 * 60 * 24 * days);
+      const date2 = formatDate(prevTime);
+      return `${date1},${date2}`;
+    }
   },
 
   dataNum: (url) => {
