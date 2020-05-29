@@ -31,5 +31,9 @@ block content
         .card__frame
   each item in upcoming
     +parallax(item)
-  .aboutAPI
-    | RAWG.IO
+  .about-provider
+    h2.about-provider__header About provider
+    a.about-provider__rawg(href='https://rawg.io') RAWG.IO
+    p.about-provider__desc
+      | RAWG is video game database.
+      | Discover your games with our knowledge

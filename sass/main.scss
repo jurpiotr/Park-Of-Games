@@ -398,8 +398,29 @@ body {
 	}
 }
 
-.aboutAPI {
+.about-provider {
 	width: 100%;
 	height: 50vh;
-	background: rgb(30, 65, 16);
+	background: rgb(0, 22, 29);
+	color: rgb(200, 255, 0);
+	text-align: center;
+
+	&__header {
+		padding: 5vmin;
+		color: rgb(200, 255, 0);
+		font-size: 5vmin;
+	}
+
+	&__rawg {
+		padding: 5vmin;
+		color: rgba(0, 86, 112, 1);
+		font-weight: 700;
+		font-size: 8vmin;
+	}
+	&__desc {
+		padding: 6vmin;
+		color: rgba(0, 86, 112, 1);
+		font-size: 5vmin;
+	}
+
 }
