@@ -1,7 +1,11 @@
 const path = require('path');
 const axios = require("axios");
 const { dateRange, dataNum } = require("../public/js/helper");
-const URL = "https://api.rawg.io/api/games?";
+require('dotenv').config();
+
+console.log(process.env);
+const URL = `https://api.rawg.io/api/games?key=${process.env.API_KEY}&`;
+
 const pug = require('pug');
 
 exports.partials = async (req, res) => {
